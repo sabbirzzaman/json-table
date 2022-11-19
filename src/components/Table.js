@@ -84,7 +84,7 @@ export default function Table({ users }) {
     const handleSearch = debounceHandler(doSearch, 500);
 
     return (
-        <div className="min-h-[400px] min-w-[900px] bg-white rounded-lg shadow-lg py-8 px-6">
+        <div className="min-h-[400px] lg:min-w-[900px] md:min-w-[700px] sm:min-w-[400px] w-[325px] bg-white rounded-lg shadow-lg py-8 px-6">
             <div className="flex mb-5 gap-7">
                 <input
                     type="text"
