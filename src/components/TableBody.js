@@ -1,9 +1,30 @@
 import React from 'react';
 
-export default function TableBody({ users }) {
+export default function TableBody({ users, searchKey }) {
+    // filtered table by search key
+    const filterBySearch = (user) => {
+        if (searchKey) {
+            if (String(user.id) === String(searchKey)) {
+                return user;
+            } else if (user.name.toLowerCase().includes(searchKey.toLowerCase())) {
+                return user;
+            } else if (user.username.toLowerCase().includes(searchKey.toLowerCase())) {
+                return user;
+            } else if (user.email.toLowerCase().includes(searchKey.toLowerCase())) {
+                return user;
+            } else if (user.phone.toLowerCase().includes(searchKey.toLowerCase())) {
+                return user;
+            } else if (user.website.toLowerCase().includes(searchKey.toLowerCase())) {
+                return user;
+            }
+        } else {
+            return user;
+        }
+    };
+
     return (
         <tbody>
-            {users.map((user) => (
+            {users.filter(filterBySearch).map((user) => (
                 <tr key={user.id}>
                     <th>{user.id}</th>
                     <td>{user.name}</td>
