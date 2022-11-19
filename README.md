@@ -1,3 +1,3 @@
 # JSON Table
 
-## [Live Link](https://github.com/facebook/create-react-app).
+## [Live Link](https://json-table-react.netlify.app/).
