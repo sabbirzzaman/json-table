@@ -5,6 +5,7 @@ import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
 
 export default function Table({ users }) {
     // local states
+    const [sortKey, setSortKey] = useState('');
     const [sortedUsers, setSortedUsers] = useState(users);
     const [isAscending, setIsAscending] = useState(true);
     const [searchKey, setSearchKey] = useState('');
@@ -16,34 +17,40 @@ export default function Table({ users }) {
                 a.name.toLowerCase() < b.name.toLowerCase() ? -1 : 1
             );
 
+            setSortKey('name')
             setSortedUsers(sortedValue);
         } else if (sortBy === 'username') {
             const sortedValue = [...sortedUsers].sort((a, b) =>
                 a.username.toLowerCase() < b.username.toLowerCase() ? -1 : 1
             );
 
+            setSortKey('username')
             setSortedUsers(sortedValue);
         } else if (sortBy === 'email') {
             const sortedValue = [...sortedUsers].sort((a, b) =>
                 a.email.toLowerCase() < b.email.toLowerCase() ? -1 : 1
             );
 
+            setSortKey('email')
             setSortedUsers(sortedValue);
         } else if (sortBy === 'phone') {
             const sortedValue = [...sortedUsers].sort((a, b) =>
                 a.phone.toLowerCase() < b.phone.toLowerCase() ? -1 : 1
             );
 
+            setSortKey('phone')
             setSortedUsers(sortedValue);
         } else if (sortBy === 'website') {
             const sortedValue = [...sortedUsers].sort((a, b) =>
                 a.website.toLowerCase() < b.website.toLowerCase() ? -1 : 1
             );
 
+            setSortKey('website')
             setSortedUsers(sortedValue);
         } else if (sortBy === 'id') {
             const sortedValue = [...sortedUsers].sort((a, b) => a.id - b.id);
 
+            setSortKey('id')
             setSortedUsers(sortedValue);
         }
     };
@@ -105,7 +112,7 @@ export default function Table({ users }) {
             <div className="flex items-center justify-center">
                 <div className="overflow-x-auto">
                     <table className="table table-compact w-full">
-                        <TableHead handleSortedUsers={handleSortedUsers} />
+                        <TableHead sortKey={sortKey} handleSortedUsers={handleSortedUsers} />
                         <TableBody users={sortedUsers} searchKey={searchKey} />
                     </table>
                 </div>
